@@ -14,13 +14,8 @@ import java.util.List;
 
 @Repository
 public class BoardDAO {
-
     @Autowired
     JdbcTemplate jdbcTemplate;
-
-    Connection conn = null;
-    PreparedStatement stmt = null;
-    ResultSet rs = null;
 
     public int insertBoard(BoardVO vo) {
         String sql = "insert into BOARD (title, writer, content, category) values ("
@@ -70,6 +65,10 @@ public class BoardDAO {
     }
 
     /*
+    Connection conn = null;
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
+
     private final String BOARD_INSERT = "insert into BOARD (category, title, writer, content, photo) values (?,?,?,?,?)";
     private final String BOARD_UPDATE = "update BOARD set category=?, title=?, writer=?, content=?, moddate=?, photo=? where seq=?";
     private final String BOARD_DELETE = "delete from BOARD  where seq=?";

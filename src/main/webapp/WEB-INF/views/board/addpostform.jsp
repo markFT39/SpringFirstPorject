@@ -10,7 +10,7 @@
 <body>
 
 <h1>Add New Post</h1>
-<form action="addpost.jsp" method="post" enctype="multipart/form-data">
+<form action="addok" method="post">
     <table>
         <tr>
             <td>Category:</td>
@@ -25,18 +25,12 @@
             <td><input type="text" name="writer"/></td>
         </tr>
         <tr>
-            <td>Photo:</td>
-            <td><input type="file" name="photo" value="${u.getPhoto()}"/>
-        <tr>
             <td>Content:</td>
             <td><textarea cols="50" rows="5" name="content"></textarea></td>
         </tr>
-        <tr>
-            <td><a href="posts.jsp">View All Records</a></td>
-            <td align="right"><input type="submit" value="Add Post"/></td>
-        </tr>
     </table>
+    <button type="button" onclick="location.href='list'">View all Records</button>
+    <button type="submit">Add Post</button>
 </form>
-
 </body>
 </html>

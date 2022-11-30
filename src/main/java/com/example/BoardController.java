@@ -15,15 +15,10 @@ public class BoardController {
     @Autowired
     BoardServiceImpl boardService;
 
-    @RequestMapping("/")
-    public String home() {
-        return "index";
-    }
-
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String boardlist(Model model) {
         model.addAttribute("list", boardService.getBoardList());
-        return "list";
+        return "board/list";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
@@ -49,14 +44,14 @@ public class BoardController {
 
     @RequestMapping(value = "/editok", method = RequestMethod.POST)
     public String editPostOk(BoardVO vo) {
-        if (boardService.insertBoard(vo) == 0)
+        if (boardService.updateBoard(vo) == 0)
             System.out.println("데이터 수정 실패 ");
         else
             System.out.println("데이터 수정 성공");
         return "redirect:list";
     }
 
-    @RequestMapping(value = "/editform/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/deleteok/{id}", method = RequestMethod.GET)
     public String deletePostOk(@PathVariable("id") int id) {
         if (boardService.deleteBoard(id) == 0)
             System.out.println("데이터 삭제 실패 ");
